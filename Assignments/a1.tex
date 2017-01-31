@@ -1,0 +1,64 @@
+\documentclass[11pt, oneside]{article}    % use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                     % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                       % ... or a4paper or a5paper or ...
+%\usepackage[parfill]{parskip}         % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}            % Use pdf, png, jpg, or epsß with pdflatex; use eps in DVI mode
+\usepackage{fullpage}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{algorithmicx}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\algrenewcommand\algorithmicprocedure{}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\hw}[2]{\noindent {\bf COMP 4030/6030}: Assignment #1\\
+{\bf Due date}: #2\\}
+
+\begin{document}
+\hw{1}{02/07/2016}
+\begin{enumerate}
+	\item 
+Write a Python function that takes as input a list L and returns a list that is the reverse of L.
+
+	\item
+A palindrome is a string that is the same as its reverse.  For example, ``abba" is a palindrome.  Write a Python function that returns true if its input, which is a string, is a palindrome.
+
+	\item Find the tightest $O$ complexity of the following functions:
+	\begin{itemize}
+		\item $T(n) = 5n^3 + 1$
+		\item $T(n) = 10n + 3n^2 + 10$
+	\end{itemize}
+
+	\item
+What is the running time complexity in terms of $O$ of the following functions:
+
+\begin{verbatim}
+# L is a list of numbers
+def foo(L):
+    sum = 0
+    for x in L:
+        sum += x*x
+    return sum
+\end{verbatim}
+
+	\item
+What is the running time complexity in terms of $O$ of the following functions:
+
+\begin{verbatim}
+# L is a list of numbers
+def bar(L):
+    sum = 0
+    for x in L:
+        for y in L
+           sum += x*x + y*y
+    for z in L+L:
+        sum += z*z*z
+    return sum
+\end{verbatim}
+
+\end{enumerate}
+
+\end{document}
