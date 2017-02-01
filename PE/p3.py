@@ -9,7 +9,8 @@ while(c*c <= m):
     m = m // c
     s = c
   else:
-    c+=1
+    if (c==2): c=3
+    else: c=c+2
   
 if m>s:
   s = m
