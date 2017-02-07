@@ -57,7 +57,6 @@ we actually used this assumption to prove that f(2) is correct.
 Is f(3) correct? Yes because if f(2) is correct, 
 then we prove (lines 46-48) that f(3) is also correct.
 '''
-
 # c returns ?
 def c(L):
 	if len(L) == 0:
