@@ -1,0 +1,71 @@
+\documentclass[11pt, oneside]{article}    % use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                     % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                       % ... or a4paper or a5paper or ...
+%\usepackage[parfill]{parskip}         % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}            % Use pdf, png, jpg, or epsß with pdflatex; use eps in DVI mode
+\usepackage{fullpage}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{algorithmicx}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\algrenewcommand\algorithmicprocedure{}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\hw}[2]{\noindent {\bf COMP 4030/6030}: Assignment #2\\
+{\bf Due date}: #2\\}
+
+\begin{document}
+\hw{1}{02/14/2016}
+
+Email programming solutions to the TA (Quang Tran, qmtran@memphis.edu).  Put ``COMP 4030/6030 assignment 1" on the subject line.
+\begin{enumerate}
+	\item (Programming assignment) Write an {\bf iterative} Python function that takes two sorted lists and returns a sorted list that is a merge of the two lists.  The function looks like this:
+\begin{verbatim}
+def merge(A, B):
+   C = []
+   # do some processing and manipulation
+   return C
+\end{verbatim}
+Example, merge([1,3,5,7,9], [0,2,4]) returns [0,1,2,3,4,5,7,9]. 
+
+	\item (Programming assignment) Write a {\bf recursive} Python function that takes two sorted lists and returns a sorted list that is a merge of the two lists.
+	
+	\item Explain why (i) $10n + 2n^2 \in O(n^2)$ and (ii) $10n + 2n^2 \in \Omega(n^2)$
+	\item What is the running time complexity of the following function:
+
+\begin{verbatim}
+# L is a list of numbers
+def foo(L):
+    sum = 0
+    for x in L:
+        j = 1
+        while j < len(L):
+            sum += x*x*j
+            j = j * 2
+    return sum
+\end{verbatim}
+
+	\item Explain why the following function correctly adds all items in the input list $L$.
+\begin{verbatim}
+def add(L):
+    if len(L) == 0:
+        return 0
+    return L[0] + add(L[1:])
+\end{verbatim}
+
+	\item Explain why the following function correctly select all even items in the input list $L$.
+\begin{verbatim}
+def select(L):
+    if len(L) == 0:
+        return []
+    if L[0] % 2 == 0:
+        return [L[0]] + select(L[1:])
+    return select(L[1:])
+\end{verbatim}
+
+\end{enumerate}
+
+\end{document}
