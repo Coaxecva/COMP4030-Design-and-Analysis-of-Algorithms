@@ -1,0 +1,59 @@
+\documentclass[11pt, oneside]{article}    % use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                     % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                       % ... or a4paper or a5paper or ...
+%\usepackage[parfill]{parskip}         % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}            % Use pdf, png, jpg, or epsß with pdflatex; use eps in DVI mode
+\usepackage{fullpage}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{algorithmicx}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\algrenewcommand\algorithmicprocedure{}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\hw}[2]{\noindent {\bf COMP 4030/6030}: Assignment #2\\
+{\bf Due date}: #2\\}
+
+\begin{document}
+\hw{1}{03/02/2016}
+
+Email programming solutions to the TA (Quang Tran, qmtran@memphis.edu).  Put ``COMP 4030/6030 assignment 3" on the subject line.
+\begin{enumerate}
+	\item (Programming assignment, 25 points) Write a Python function called Split, which takes a list of numbers A and returns a list of numbers B with the following properties:
+	\begin{itemize}
+		\item The numbers in B are simply an rearrangement of the numbers in A.
+		\item In particular, A[0] appears somewhere in B, say at index i.  (This means A[0] == B[i])
+		\item If j $<=$ i, then B[j] $<=$ B[i].
+		\item If j $>$ i, then B[j] $>$ B[i].
+	\end{itemize}
+
+Example: Split([{\bf 10},7,20,3,0,9,15,7,18,50]) returns [7,3,0,9,7,{\bf 10},20,15,18,50].  Notice that numbers in the returned list are the same as those in the input list; they are simply rearranged.  Further, the arrangement is such as in the returned list, (i) everything to the left of 10 (A[0]) is less than or equal to it and (ii) everything to the right of 10 is greater than it.
+	
+	\item (Bonus Programming assignment, 20 points) Rewrite Python program in question 2 to take $\Theta(1)$ of space.  Notice that the space complexity does not account for the input list A.
+		
+	\item (25 points) Analyze the running time complexity and space complexity of your own program in question 1.
+
+	\item (25 points) Explain why $n^5 + 2n^2 \in \Theta(n^5)$.
+
+	\item (25 points) Given the following function:
+\begin{verbatim}
+def find_cats(L, idx, output):
+   if idx < len(L):
+      if "cat" in L[idx]:
+         output.append(L[idx])
+         find_cats(L, idx+1, output)
+      else:
+         find_cats(L, idx+1, output)
+	\end{verbatim}
+Assuming L is a list of strings, explain why after executing the code below, A will be a list of all strings (in L) that contain ``cat". 
+\begin{verbatim}
+A = []
+find_cats(L, 0, A)
+\end{verbatim}
+ Hint: this is an explanation of $why$ a function is correct, not $how$ it works.  Clearly, in your explanation of $why$, you will probably refer to the logic of the function (i.e. $how$ it works in some places).  But explaining $why$ something is correct and $how$ it works are not the same thing.
+\end{enumerate}
+
+\end{document}
