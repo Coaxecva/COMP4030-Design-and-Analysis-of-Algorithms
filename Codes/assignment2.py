@@ -74,10 +74,9 @@ def iter_merge(A,B):
 	return C
 
 
-# Running time: T(n) = c + T(n-1)
-# T(n) is the running time of add when L has n elements.
-# When L has n-1 elements, the running time is T(n-1)
+# Running time: T(n) = c + T(n-1) # T(n) is the running time of add when L has n elements. 
+# When L has n-1 elements, the running time is T(n-1) 
 def add(L):
-	if len(L)==0:
-		return 0
+	if len(L)==0:         
+		return 0     
 	return L[0] + add(L[1:])
