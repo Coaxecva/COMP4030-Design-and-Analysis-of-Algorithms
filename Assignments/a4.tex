@@ -1,0 +1,40 @@
+\documentclass[11pt, oneside]{article}    % use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                     % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                       % ... or a4paper or a5paper or ...
+%\usepackage[parfill]{parskip}         % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}            % Use pdf, png, jpg, or epsß with pdflatex; use eps in DVI mode
+\usepackage{fullpage}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{algorithmicx}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\algrenewcommand\algorithmicprocedure{}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\hw}[2]{\noindent {\bf COMP 4030/6030}: Assignment #1\\
+{\bf Due date}: #2\\}
+
+\begin{document}
+\hw{4}{03/21/2016}
+
+Email programming solutions to the TA (Quang Tran, qmtran@memphis.edu).  Put ``COMP 4030/6030 assignment 3" on the subject line.
+\begin{enumerate}
+	\item Programming exercise: {\bf maxsum} computes the largest possible value of summing consecutive numbers from an input list of numbers.  For example, given the input [10,-20,5,-3,7,8,-10,4], the output is 17.  This is because the largest possible sum of consecutive numbers from this list is 17 (5-3+7+8).  Now, write a Python program to implement {\bf maxsum} based on each of the following strategies (each strategy corresponds to a different Python implementation):
+	\begin{enumerate}
+	\item (15 points) Look at all possible intervals of consecutive numbers in the input list.  Compute and remember the maximum sum.  This function should run in $O(n^3)$ time.
+	\item (15 points) Modify the previous strategy so that your implementation only takes $O(n^2)$ running time.  Of course, if your previous strategy is already $O(n^2)$, you get points for this automatically.
+	\item (15 points) Divide and conquer: divide the list in two halves.  Compute max sum for the left and right halves separately.  Then, compute max sum for the case when the interval can possibly cross the two halves.  This can be done in $O(n)$ time.  If done right, this strategy only takes $O(n \log n)$ running time.
+	\end{enumerate}
+	
+	\item (15 points) Use the arithmetic sum to find out the value of $1 + 2 + 3 + 4 + \cdots + 500$.
+	\item (15 points) Use the geometric sum to find out the value of $1 + 3 + 3^2 + 3^3 + \cdots + 3^{20}$.
+	\item (15 points) Use substitution to find the complexity of $T(n) = 5n + T(n-1)$. (Assume $T(1) = 1$).
+	\item (15 points) Use substitution to find the complexity of $T(n) = n^2 + 4 \cdot T({n \over 2})$. (Assume $T(1) = 1$).
+	\item (15 points) Use substitution to find the complexity of $T(n) = 4n + T({n \over 2})$.  (Assume $T(1) = 1$).
+%	\item Use substitution to find the complexity of $T(n) = 1 + 2T(n-1)$. (Assume $T(1) = 1$).
+\end{enumerate}
+
+\end{document}
