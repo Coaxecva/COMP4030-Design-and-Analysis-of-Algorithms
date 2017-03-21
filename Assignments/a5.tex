@@ -1,0 +1,40 @@
+\documentclass[11pt, oneside]{article}    % use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                     % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                       % ... or a4paper or a5paper or ...
+%\usepackage[parfill]{parskip}         % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}            % Use pdf, png, jpg, or epsß with pdflatex; use eps in DVI mode
+\usepackage{fullpage}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{algorithmicx}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\algrenewcommand\algorithmicprocedure{}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\hw}[2]{\noindent {\bf COMP 4030/6030}: Assignment #1\\
+{\bf Due date}: #2\\}
+
+\begin{document}
+\hw{5}{03/28/2016}
+
+Email programming solutions to the TA (Quang Tran, qmtran@memphis.edu).  Put ``COMP 4030/6030 assignment 5" on the subject line.
+\begin{enumerate}
+	\item Programming assignment: in this problem, you need to implement different strategies to determine the majority item in a list of items.  There's a special constraint that you can not compare items using less than or greater than operators.  You can only compare if two items are the same.  An item is a majority element if its frequency is greater than ${n \over 2}$, where $n$ is the number of items in the list.  For example, in the list [C, C, T, T, C, T, C, C], C is the majority item, because the frequency of C is 5, which is greater than $4 = {8 \over 2}$.  Another example, the list [C, C, T, C, C, S, T, T] has no majority item.
+		\begin{enumerate}
+		\item (20 points) Use a brute-force strategy to determine the majority item in $O(n^2)$ time.  Hint: compute the frequency of each item and determine the majority if there is one.
+		\item (20 points) Use a divide-and-conquer strategy to determine the majority item in $O(n \log n)$ time.  Hint: 
+			\begin{itemize}
+			\item Majority(L, i, j) returns the majority element for the interval [i, j] in L.
+			\item Split the problem of size $n$ into two subproblems of size ${n \over 2}$ (left half and right half).
+			\item After the majority elements of the left half and right half are determined, you will want to compute the majority element for the entire interval [i,j] in O(n) time.				
+			\end{itemize}
+		\end{enumerate}
+	\item (20 points) Use the Master's theorem to find the complexity (in terms of $\Theta$) for the following equation: $T(n) = 2n + 9T({n \over 3})$.  Assuming $T(1) = 1$.
+	\item (20 points) Use the Master's theorem to find the complexity (in terms of $\Theta$) for the following equation: $T(n) = 4n^2 + 9T({n \over 3})$.  Assuming $T(1) = 1$.
+	\item (20 points) Use the Master's theorem to find the complexity (in terms of $\Theta$) for the following equation: $T(n) = 4n + 4T({n \over 3})$.  Assuming $T(1) = 1$.
+\end{enumerate}
+
+\end{document}
