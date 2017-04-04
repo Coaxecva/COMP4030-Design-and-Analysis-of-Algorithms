@@ -56,9 +56,9 @@ def find_keywords(L, K, idx, output):
 			find_keywords(L, K, idx+1, output)
 
 
-# output = []
-# find_keywords(['the cat is cute', 'the cat is lazy.', 'I am dog.'], 'cat', 0, output)
-# print(output)
+output = []
+find_keywords(['the cat is cute', 'the cat is lazy.', 'I am dog.'], 'cat', 0, output)
+print(output)
 
 def merge(A,B):
 	C = []

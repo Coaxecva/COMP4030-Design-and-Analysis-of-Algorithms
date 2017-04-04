@@ -42,7 +42,6 @@ def promising(i):
 # NQueens(-1)
 
 # Generate all sets with N elements.
-
 def Sets(i):
 	pass
 
