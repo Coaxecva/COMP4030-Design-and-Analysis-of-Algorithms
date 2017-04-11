@@ -40,12 +40,3 @@ def promising(i):
 	return True
 
 # NQueens(-1)
-
-# Generate all sets with N elements.
-def Sets(i):
-	pass
-
-
-Sets(-1)
-
-# N=4, {0,3}.  Solution = [True, False, False, True]
