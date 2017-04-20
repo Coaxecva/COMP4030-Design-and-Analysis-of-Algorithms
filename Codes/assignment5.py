@@ -1,80 +1,105 @@
-'''
-Q2.
-T(n) = 2n + 9T(n/3)
-T(n) is in Theta(n^2)
 
-Q3.
-T(n) = 4n^2 + 9T(n/3)
-T(n) is in Theta(n^2 log n)
+import graph
 
-Q4.
-T(n) = 4n + 4T(n/3)
-T(n) is in Theta(n^(log_3 4))
-'''
 
-# Q1
-# votes = ['C', 'C', 'T', 'T', 'C', 'T', 'C', 'C', 'T']
+def get_set(s):
+	return [ i for i in range(len(s)) if s[i] == True]
 
-def majority_brute_force(L):
-	for x in L:
-		count = 0
-		for i in range(len(L)):
-			if x == L[i]:
-				count += 1
-		if count > len(L)/2:
-			return x
-	return None
+# CameraCoverage(i) assumes Solution has been set at indices 0, 1, ..., i
+# CameraCoverage(i) prints all Solutions having this particular configuration.
+def CameraCoverage(i):
+	global optimal
 
-# majority(L, i, j) returns the majority element from interval [i,j]
-# T(n) : is the running time of majority(L, i, j). (n is the number of items in [i,j])
-# The running of majority(L, 0, 100) is T(101)
-# T(n) = 2*T(n/2) + n. T(n) is in Theta(n log n)
-def majority(L, i, j):
-	# 0. Handle smallest case(s)
-	if i==j:
-		return L[i]
-	if i>j:
-		return None
+	if promising1(i):
+		if i==N-1:
+			if len(get_set(Solution)) < len(optimal):
+				optimal = get_set(Solution)
+		else:
+			Solution[i+1] = False
+			CameraCoverage(i+1)
+			Solution[i+1] = True
+			CameraCoverage(i+1)
 
-	# 1. find the majority elements in the left and right halves.
-	middle = (i+j)//2
-	# maj_left = majority_brute_force(L[i:middle+1])
-	maj_left = majority(L, i, middle)   # majority(L, i, middle) returns maj ele from interval [i,middle]
-	maj_right = majority(L, middle+1, j)
+def promising1(i):
+	if i < N-1:
+		return True
+	else:
+		for e in G.Edges:
+			u, v = e[0], e[1]
+			# print(N,u,v,Solution)
+			if Solution[u]==False and Solution[v]==False:
+				return False
+		return True
 
-	# 2. determine the majority in [i,j] in O(n) time.
-	count_left, count_right = 0, 0
-	for k in range(i,j+1):
-		if L[k] == maj_left:
-			count_left += 1
-		if L[k] == maj_right:
-			count_right += 1
-	if count_left > (j-i+1)/2:
-		return maj_left
-	if count_right > (j-i+1)/2:
-		return maj_right
-	return None
+# N = 4
+# G = graph.random_graph(N, 0.5)
+# Solution = [-1]*N
+# optimal = [ i for i in range(N) ]
 
-def rand_list(n=500):
-	chars = 'abc'
-	v = ''
-	for i in range(n):
-		rand_c = chars[ random.randint(0, len(chars)-1) ]
-		v += rand_c
-	return list(v)
+# CameraCoverage(-1)
+# for e in G.Edges:
+# 	print(e, e[0], e[1])
+# print("Optimal solution", optimal)
 
-import time
-import random
+def largest_clique(i):
+	global optimal
+	if promising2(i):
+		if i==N-1:
+			# print(get_set(Solution))
+			if len(optimal) < len(get_set(Solution)):
+				optimal = get_set(Solution)
+		else:
+			Solution[i+1] = False
+			largest_clique(i+1)
+			Solution[i+1] = True
+			largest_clique(i+1)
 
-for n in range(1000, 20000, 2000):
-	votes = rand_list(n)
-	
-	start = time.time()
-	print( majority_brute_force(votes) )
-	end = time.time()
-	print("Bruteforce", n, end-start)
+def promising2(i):
+	if Solution[i]==False:
+		return True
+	for j in range(i+1):
+		if i!=j and Solution[j]==True and (i,j) not in G:
+			return False
+	return True
 
-	start = time.time()
-	print( majority(votes, 0, len(votes)-1) )
-	end = time.time()
-	print("Quick", n, end-start)
+# N = 5
+# G = graph.random_graph(N, 0.5)
+# Solution = [-1]*N
+# optimal = []
+# largest_clique(-1)
+# print("G:")
+# for e in G.Edges:
+# 	print(e)
+# print("Optimal", optimal)
+
+
+def k_clique(i):
+	if promising3(i):
+		if i==N-1:
+			print(get_set(Solution))
+		else:
+			Solution[i+1] = False
+			k_clique(i+1)
+			Solution[i+1] = True
+			k_clique(i+1)
+
+def promising3(i):
+	if i < N-1:
+		return True
+	if len([j for j in range(N) if Solution[j] == True]) < K:
+		return False
+	for j in range(N):
+		for k in range(j+1,N):
+			# print(j,k, (j,k) not in G)
+			if j!=k and Solution[k]==True and Solution[j]==True and (j,k) not in G:
+				return False
+	return True
+
+N = 4
+K = 2
+G = graph.random_graph(N, 0.5)
+Solution = [-1]*N
+k_clique(-1)
+print("G:")
+for e in G.Edges:
+	print(e)
