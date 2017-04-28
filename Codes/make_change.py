@@ -1,3 +1,4 @@
+
 coins = [4,5,13,17]
 
 Table = {}
@@ -16,3 +17,4 @@ for i in range(1000):
 	Table = {}
 	print(i, make_change(coins, i))
 
+print(matplotlib)
