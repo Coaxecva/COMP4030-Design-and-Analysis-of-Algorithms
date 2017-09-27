@@ -160,3 +160,18 @@ def recursive_third(coinList):
 	# If B is lighter than A=C
 	elif scale(A,B) == 1:
 		return recursive_third(B)
+
+	# Problem 4: Test Cases
+
+testValues = [1, 2, 100, 121, 27, 61, 92]
+testCases = ["n = 1", 'n = 2', 'n%2 = 0', 'n%2 = 1', 'n%3 = 0', 'n%3 = 1', 'n%3 = 2']
+#for i in range(len(testValues)):
+	#coins = generate_coins(testValues[i])
+coins = generate_coins(1)
+print(coins)
+print(split(coins,2)[1])
+#print('Test case:', testCases[i])
+print('There are',len(coins),'coins in the set')
+print('Iterative fake coin value:', iterative(coins))
+print('Recursive (half) fake coin value:',recursive_half(coins))
+print('Recursive (third) fake coin value:',recursive_third(coins),'\n')
