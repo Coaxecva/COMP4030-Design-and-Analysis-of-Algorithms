@@ -1,4 +1,4 @@
-#Sohail Khalid
+#*censored*
 #Comp 4030
 #Assignment 1
 import math
