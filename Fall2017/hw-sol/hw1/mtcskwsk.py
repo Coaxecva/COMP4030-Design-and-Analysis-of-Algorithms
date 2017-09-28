@@ -1,5 +1,5 @@
 '''
-Michael Ciskowski
+*censored*
 Assignment 1
 COMP 4030
 9/7/2017
